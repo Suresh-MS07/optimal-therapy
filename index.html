@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Physiotherapy & Rehabilitation Centre | Bhopal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #005A8D;
+            --accent-blue: #00A3E0;
+            --accent-green: #28a745;
+            --text-dark: #2c3e50;
+            --text-light: #555;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { 
+            scroll-behavior: smooth; 
+            background-color: #f0f8ff; /* Fallback background color */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: transparent; 
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        #vanta-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+        }
+
+        section { 
+            overflow: hidden; 
+            position: relative;
+            padding: 40px 20px; 
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 40px;
+            background-color: rgba(255, 255, 255, 0.75);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .container.bg-light {
+             background-color: rgba(248, 249, 250, 0.8);
+        }
+        .container.bg-transparent-blur {
+            background-color: rgba(238, 247, 255, 0.8);
+             backdrop-filter: blur(8px);
+        }
+
+
+        h1, h2, h3, h4 {
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        h2 { 
+            text-align: center; 
+            font-size: 2.8rem; 
+            margin-top: 0;
+            margin-bottom: 50px; 
+            color: var(--primary-blue); 
+            font-weight: 700; 
+        }
+        h2.gradient-text {
+            background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .hidden .stagger-child {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .show .stagger-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .show .stagger-child:nth-child(2) { transition-delay: 0.1s; }
+        .show .stagger-child:nth-child(3) { transition-delay: 0.2s; }
+        .show .stagger-child:nth-child(4) { transition-delay: 0.3s; }
+
+        header {
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0; z-index: 1000; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 40px; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; position: relative; padding-bottom: 5px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-blue); }
+        .nav-cta {
+            background-color: var(--primary-blue); color: var(--white); padding: 10px 22px; border-radius: 6px; font-weight: 500; transition: background-color 0.3s, transform 0.3s;
+        }
+        .nav-cta:hover { background-color: var(--accent-blue); color: var(--white) !important; transform: scale(1.05); }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger .bar { width: 25px; height: 3px; background-color: var(--primary-blue); border-radius: 5px; transition: all 0.3s ease-in-out; }
+
+
+        .hero {
+            display: flex; align-items: center; min-height: 90vh; background-color: transparent; padding: 0;
+        }
+        .hero .container {
+            background-color: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: none;
+            padding-top: 0;
+            padding-bottom: 0;
+            display: flex;
+            align-items: center;
+        }
+        .hero-content { flex: 1.2; padding-right: 40px; }
+        .hero-content h1 {
+            font-size: 4rem; font-weight: 800; line-height: 1.2; margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--accent-blue));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent;
+        }
+        .hero-content p.subtitle { font-size: 1.25rem; color: var(--text-light); margin-bottom: 40px; max-width: 550px; }
+        .hero-cta a {
+            display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 18px 40px; background: var(--accent-blue);
+            color: var(--white); border-radius: 8px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0, 163, 224, 0.4);
+        }
+        .hero-cta a:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 6px 25px rgba(0, 163, 224, 0.5); }
+        .hero-social-proof { display: flex; align-items: center; gap: 15px; margin-top: 30px; }
+        .hero-social-proof .stars { color: #f39c12; font-size: 1.2rem; }
+        .hero-social-proof p { margin: 0; color: var(--text-dark); font-weight: 500; }
+        .hero-image { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hero-image img {
+            max-width: 90%; position: relative; z-index: 1; border-radius: 10px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); transition: transform 0.4s ease;
+        }
+        .hero-image:hover img { transform: scale(1.03); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; text-align: center; }
+        .stat-item { padding: 20px; }
+        .stat-item .stat-icon { font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 15px; }
+        .stat-item h3 { font-size: 3.5rem; color: var(--primary-blue); margin: 0 0 5px 0; font-weight: 700; }
+        .stat-item p { font-size: 1.1rem; color: var(--text-light); margin: 0; }
+        
+        .gallery-preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .gallery-preview-item img { width: 100%; height: 300px; object-fit: cover; display: block; border-radius: 8px; transition: transform 0.3s; }
+        .gallery-preview-item:hover img { transform: scale(1.05); }
+        .view-all-btn-container { text-align: center; margin-top: 40px; }
+        .view-all-btn { text-decoration: none; padding: 15px 35px; background: var(--primary-blue); color: var(--white); border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
+        .view-all-btn:hover { background: var(--accent-blue); transform: scale(1.05); }
+        
+        .service-list-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .card, .service-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border: 1px solid rgba(0, 90, 141, 0.2);
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s; 
+            display: flex; flex-direction: column; 
+            position: relative;
+        }
+        .card:hover, .service-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 90, 141, 0.2); }
+        .service-item-image img { width: 100%; height: 250px; object-fit: cover; }
+        .service-item-content { padding: 25px; }
+        .service-item-content h3 { margin-top: 0; font-size: 1.6rem; }
+        .service-item-content p { color: var(--text-light); line-height: 1.7; }
+        
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .team-card img { width: 100%; height: 350px; object-fit: cover; }
+        .team-card-content { padding: 25px; }
+        .team-card h3 { margin: 0 0 5px 0; font-size: 1.4rem; }
+        .team-card p.title { color: var(--accent-blue); font-weight: 500; margin: 0 0 15px 0; }
+        .team-card p.bio { color: var(--text-light); line-height: 1.6; }
+        
+        .testimonial-slider-container { max-width: 800px; margin: auto; overflow: hidden; position: relative; }
+        .testimonial-slide { min-width: 100%; box-sizing: border-box; }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 5px solid var(--accent-blue);
+        }
+        .testimonial-card p { font-style: italic; font-size: 1.1rem; color: var(--text-light); margin-bottom: 15px; }
+        .testimonial-card .author { font-weight: 600; color: var(--primary-blue); }
+        .testimonial-dots { text-align: center; margin-top: 20px; }
+        .testimonial-dots .dot { height: 12px; width: 12px; margin: 0 5px; background-color: rgba(0,0,0,0.2); border-radius: 50%; display: inline-block; cursor: pointer; transition: background-color 0.3s ease; }
+        .testimonial-dots .dot.active { background-color: var(--primary-blue); }
+        
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;}
+        .blog-card-content { padding: 20px; }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-card .meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 10px; }
+        .blog-card h3 { font-size: 1.3rem; margin: 0 0 10px 0; }
+        .blog-card .read-more { color: var(--primary-blue); font-weight: 500; text-decoration: none; }
+        
+        .faq-container { max-width: 800px; margin: auto; padding: 20px; background-color: rgba(255,255,255,0.1); border-radius: 8px;}
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 20px 0; }
+        .faq-question h3 { margin: 0; color: var(--text-dark); font-size: 1.2rem; font-weight: 500; transition: color 0.3s; }
+        .faq-question:hover h3 { color: var(--primary-blue); }
+        .faq-toggle { font-size: 1.8rem; color: var(--primary-blue); transition: transform 0.3s ease; font-weight: 300; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .faq-answer p { padding-bottom: 20px; margin: 0; color: var(--text-light); line-height: 1.7; }
+        
+        .appointment-form-container { 
+            max-width: 700px; 
+            margin: auto; 
+            padding: 50px; 
+            background-color: rgba(255,255,255,0.7); 
+            backdrop-filter: blur(5px); 
+            border-radius: 8px;
+        }
+        .appointment-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+        .form-group {
+            position: relative;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            font-size: 1rem;
+            color: var(--text-light);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: -16px;
+            font-size: 0.8rem;
+            color: var(--primary-blue);
+        }
+        .form-group input:focus {
+            border-bottom-color: var(--primary-blue);
+        }
+        .form-group input[type="datetime-local"]:not(:placeholder-shown) + label {
+            top: -16px;
+            font-size: 0.8rem;
+            color: var(--primary-blue);
+        }
+
+        .appointment-form button {
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-blue));
+            color: var(--white);
+            border: none;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 120, 200, 0.3);
+            text-shadow: none;
+        }
+        .appointment-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 120, 200, 0.4);
+        }
+
+        @media (min-width: 768px) {
+            .appointment-form {
+                grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+                column-gap: 30px;
+                row-gap: 45px;
+            }
+            .form-group-full, .appointment-form button {
+                grid-column: 1 / -1; /* Make element span both columns */
+            }
+        }
+        
+        footer { 
+            position: relative; z-index: 1;
+            color: var(--white); 
+            padding-top: 60px;
+            background: rgba(0, 58, 92, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        footer .container { background-color: transparent; box-shadow: none; backdrop-filter: none; border: none;}
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 40px; padding-bottom: 40px; }
+        .footer-grid h4 { font-size: 1.2rem; margin-bottom: 15px; color: var(--white); position: relative; padding-bottom: 10px; font-weight: 600;}
+        .footer-grid h4::after { content: ''; position: absolute; width: 40px; height: 2px; bottom: 0; left: 0; background-color: var(--accent-blue); }
+        .footer-grid p, .footer-grid li { color: rgba(255, 255, 255, 0.8); }
+        .footer-grid ul { list-style: none; padding: 0; }
+        .footer-grid ul li a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s; line-height: 2; }
+        .footer-grid ul li a:hover { color: var(--white); }
+        .footer-bottom { text-align: center; padding: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); background-color: rgba(0,0,0,0.1); }
+        .map-container { width: 100%; height: 200px; border-radius: 8px; overflow: hidden; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        
+        .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
+    </style>
+</head>
+<body>
+
+    <div id="vanta-background"></div>
+
+    <header>
+        <a href="index.html" class="logo">Optimal Physiotherapy</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+    </header>
+
+    <section class="hero">
+        <div class="container hidden">
+            <div class="hero-content">
+                <h1 class="stagger-child">Helping You Regain Strength, Mobility & Confidence</h1>
+                <p class="subtitle stagger-child">Trusted physiotherapy care in Bhopal. Your health and recovery are our highest priority.</p>
+                <div class="hero-cta stagger-child">
+                    <a href="#appointment">Book an Appointment <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+                <div class="hero-social-proof stagger-child">
+                    <span class="stars">★★★★★</span>
+                    <p>Trusted by <strong>350+</strong> Happy Patients</p>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="optimal.png" alt="Physiotherapy Clinic Expert Dr. Pawan Patidar">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container hidden">
+            <div class="stats-grid">
+                <div class="stat-item stagger-child">
+                    <div class="stat-icon">😊</div><h3 data-target="350" class="counter">0</h3><p>Happy Patients</p>
+                </div>
+                <div class="stat-item stagger-child">
+                    <div class="stat-icon">🗓️</div><h3 data-target="9" class="counter">0</h3><p>Years of Experience</p>
+                </div>
+                <div class="stat-item stagger-child">
+                    <div class="stat-icon">⭐</div><h3 data-target="4.8" class="counter" data-decimal="true">0.0</h3><p>Star Rating</p>
+                </div>
+                <div class="stat-item stagger-child">
+                    <div class="stat-icon">📋</div><h3 data-target="1000" class="counter">0</h3><p>Personalized Plans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container bg-light hidden">
+            <h2 class="gradient-text stagger-child">A Look Inside Our Clinic</h2>
+            <div class="gallery-preview-grid stagger-child">
+                <div class="gallery-preview-item"><img src="clinic1.png" alt="Reception Area"></div>
+                <div class="gallery-preview-item"><img src="clinic5.png" alt="Treatment Room"></div>
+                <div class="gallery-preview-item"><img src="clinic9.png" alt="Modern Physiotherapy Equipment"></div>
+                <div class="gallery-preview-item"><img src="clinic8.png" alt="Rehabilitation Area"></div>
+            </div>
+            <div class="view-all-btn-container stagger-child">
+                <a href="gallery.html" class="view-all-btn">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container hidden">
+            <h2 class="gradient-text stagger-child">Services We Offer</h2>
+            <div class="service-list-container">
+                 <div class="service-item stagger-child">
+                    <div class="service-item-image"><img src="backpain1.jpg" alt="Back & Neck Pain Relief"></div>
+                    <div class="service-item-content">
+                        <h3>Back & Neck Pain Relief</h3><p>Our clinic specializes in diagnosing and treating acute and chronic back and neck pain...</p>
+                    </div>
+                </div>
+                <div class="service-item stagger-child">
+                    <div class="service-item-image"><img src="postser.jpg" alt="Post-Surgical Rehabilitation"></div>
+                    <div class="service-item-content">
+                        <h3>Post-Surgical Rehabilitation</h3><p>Recovery after surgery is crucial. We create customized rehabilitation programs...</p>
+                    </div>
+                </div>
+                 <div class="service-item stagger-child">
+                    <div class="service-item-image"><img src="sport1.jpg" alt="Sports Injury Recovery"></div>
+                    <div class="service-item-content">
+                        <h3>Sports Injury Recovery</h3><p>From minor sprains to major tears, our sports injury programs are designed to get athletes back in the game...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container bg-light hidden">
+            <h2 class="gradient-text stagger-child">Meet Our Expert Specialists</h2>
+            <div class="team-grid">
+                <div class="card team-card stagger-child">
+                    <img src="optimal.png" alt="Dr. Pawan Patidar">
+                    <div class="team-card-content">
+                        <h3>Dr. Pawan Patidar</h3><p class="title">Founder & Senior Physiotherapist</p><p class="bio">With over 9 years of experience...</p>
+                    </div>
+                </div>
+                <div class="card team-card stagger-child">
+                    <img src="ravina1.jpg" alt="Dr. Ravina Patidar">
+                    <div class="team-card-content">
+                        <h3>Dr. Ravina Patidar</h3><p class="title">Pediatric & Women's Health Specialist</p><p class="bio">Dr. Ravina focuses on providing compassionate care...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container bg-transparent-blur hidden">
+            <h2 class="gradient-text stagger-child">What Our Patients Say</h2>
+            <div class="testimonial-slider-container stagger-child">
+                <div class="testimonial-slides">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p>"For months, I had a nagging shoulder pain from my desk job. Dr. Pawan didn't just give me exercises; he explained the *why* behind them. The clinic has a very positive and professional atmosphere. After a few weeks of treatment, I feel a world of difference. Truly the best physiotherapy in Bhopal."</p>
+                            <div class="author">— Priya Singh, Arera Colony</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p>"I had an ACL surgery after a football injury, and the recovery was tough. The team at Optimal Physiotherapy was fantastic. They have modern equipment and created a step-by-step plan that got me back on my feet and confident to play again. I am very grateful for their expert guidance."</p>
+                            <div class="author">— Rohan Mehra, Bhopal</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p>"We were looking for physiotherapy at home for my 75-year-old mother who had a fall. Dr. Ravina was so patient and gentle with her. The home visit facility is a lifesaver for families like ours. The care and compassion they show for elderly patients is commendable. Highly recommended."</p>
+                            <div class="author">— Sunita Joshi, Kolar Road</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots stagger-child"></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container hidden">
+            <h2 class="gradient-text stagger-child">Health & Wellness Insights</h2>
+            <div class="blog-grid">
+                <div class="card blog-card stagger-child"><img src="5strech.jpg" alt="Blog post"><div class="blog-card-content"><p class="meta">Sep 26, 2025 | Wellness Tips</p><h3>5 Stretches to Ease Desk Job Back Pain</h3><a href="#" class="read-more">Read More →</a></div></div>
+                <div class="card blog-card stagger-child"><img src="kneesu.jpg" alt="Blog post"><div class="blog-card-content"><p class="meta">Sep 18, 2025 | Rehabilitation</p><h3>Recovering from Knee Surgery: A Patient's Guide</h3><a href="#" class="read-more">Read More →</a></div></div>
+                <div class="card blog-card stagger-child"><img src="firstv.jpg" alt="Blog post"><div class="blog-card-content"><p class="meta">Sep 12, 2025 | Clinic News</p><h3>What to Expect on Your First Physio Visit</h3><a href="#" class="read-more">Read More →</a></div></div>
+            </div>
+            <div class="view-all-btn-container stagger-child"><a href="#" class="view-all-btn">View All Articles</a></div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container bg-light hidden">
+            <h2 class="gradient-text stagger-child">Frequently Asked Questions</h2>
+            <div class="faq-container stagger-child">
+                <div class="faq-item"><div class="faq-question"><h3>How do I book an appointment?</h3><div class="faq-toggle">+</div></div><div class="faq-answer"><p>You can easily book an appointment by calling us directly...</p></div></div>
+                <div class="faq-item"><div class="faq-question"><h3>Do you offer home visits?</h3><div class="faq-toggle">+</div></div><div class="faq-answer"><p>Yes, we provide home visit facilities for patients with severe conditions...</p></div></div>
+                <div class="faq-item"><div class="faq-question"><h3>How much does a session cost?</h3><div class="faq-toggle">+</div></div><div class="faq-answer"><p>The cost can vary depending on the treatment required...</p></div></div>
+                <div class="faq-item"><div class="faq-question"><h3>What treatment methods do you use?</h3><div class="faq-toggle">+</div></div><div class="faq-answer"><p>We use various methods including stretches, exercises, mobilisation...</p></div></div>
+                <div class="faq-item"><div class="faq-question"><h3>Can a physiotherapist perform surgery?</h3><div class="faq-toggle">+</div></div><div class="faq-answer"><p>No, physiotherapists do not perform surgery...</p></div></div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="appointment">
+        <div class="container hidden">
+            <div class="appointment-form-container stagger-child">
+                <h2 class="gradient-text">Book an Appointment</h2>
+                <form class="appointment-form" action="https://formspree.io/f/your-unique-id" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder=" " required>
+                        <label for="phone">Phone Number</label>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <input type="text" id="date" name="date" placeholder=" " onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                        <label for="date">Preferred Date & Time</label>
+                    </div>
+                    <button type="submit">Request Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>Optimal Physiotherapy</h4>
+                    <p>Your trusted partner in regaining strength, mobility, and confidence. Serving Bhopal for over 9 years.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#appointment">Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-map">
+                    <h4>Our Location</h4>
+                    <p>A 68, Indravihar Panchwati Road, Near Power House Gym, Lalghati-462030</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.088656627054!2d77.3629559751009!3d23.24018207899732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c696e5e0321ed%3A0x133d135118b6a376!2sOptimal%20Physiotherapy%20%26%20Rehabilitation%20Centre!5e0!3m2!1sen!2sin!4v1727299719363!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Optimal Physiotherapy & Rehabilitation Centre. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-cta">
+        <a href="https://wa.me/917942691171" class="whatsapp" aria-label="Chat on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 439.6c-33.8 0-66.3-13.1-90.4-37.5L91.4 399.9l-26.6 69.4 69.4-26.6 12.3 12.6c24.4 24.4 57.2 37.8 90.8 37.8 97.2 0 176-78.8 176-176s-78.8-176-176-176c-97.2 0-176 78.8-176 176 0 33.8 13.1 66.3 37.5 90.4l12.6 12.3-26.6 69.4 69.4-26.6 12.3 12.6zM329.2 301.1c-6.8-3.4-40.1-19.8-46.3-22.1-6.2-2.3-10.7-3.4-15.2 3.4-4.5 6.8-17.5 22.1-21.5 26.6-4 4.5-8 5.1-14.8 1.7-6.8-3.4-28.9-10.7-55.1-34-20.3-18.2-34-40.6-38.1-47.4-4.1-6.8-.4-10.5 3-13.9 3.1-3.7 6.8-9.2 10.2-13.7 3.4-4.5 4.5-7.8 6.8-13.1 2.3-5.2 1.1-10- .6-13.5c-1.7-3.4-15.2-36.6-20.8-50.1-5.6-13.5-11.2-11.6-15.2-11.8-3.7-.2-8.1-.2-12.6-.2-4.5 0-11.8 1.7-17.9 8.5-6.1 6.8-23.5 23-23.5 55.9 0 32.9 24.1 64.8 27.5 69.4 3.4 4.5 47.1 72.4 114.8 101.1 16.5 7.1 29.4 11.4 39.6 14.6 10.2 3.2 19.3 2.8 26.5 1.7 7.8-1.2 24.1-9.8 27.5-19.3 3.4-9.5 3.4-17.6 2.3-19.3-1.2-1.8-4.5-3.4-9.5-6.1z"/></svg></a>
+        <a href="tel:+917942691171" class="call" aria-label="Call Now"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg></a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            VANTA.WAVES({
+              el: "#vanta-background",
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              scale: 1.00,
+              scaleMobile: 1.00,
+              color: 0x96d1e9,      
+              backgroundColor: 0xf0f8ff,
+              shininess: 20.00,
+              waveHeight: 5.00,
+              waveSpeed: 0.40,
+              zoom: 1.00
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.counter');
+                        counters.forEach(counter => {
+                            counter.innerText = '0';
+                            const updateCount = () => {
+                                const target = +counter.getAttribute('data-target');
+                                const isDecimal = counter.hasAttribute('data-decimal');
+                                const count = +counter.innerText;
+                                const increment = target / 200;
+                                if (count < target) {
+                                    let newCount = count + increment;
+                                    counter.innerText = isDecimal ? newCount.toFixed(1) : Math.ceil(newCount);
+                                    setTimeout(updateCount, 10);
+                                } else {
+                                    counter.innerText = isDecimal ? target.toFixed(1) : target;
+                                }
+                            };
+                            updateCount();
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.stats-grid').forEach(el => counterObserver.observe(el));
+
+            const testimonialContainer = document.querySelector('.testimonial-slider-container');
+            if (testimonialContainer) {
+                const testimonialSlides = testimonialContainer.querySelector('.testimonial-slides');
+                const slides = testimonialSlides.querySelectorAll('.testimonial-slide');
+                const dotsContainer = testimonialContainer.parentElement.querySelector('.testimonial-dots');
+                let currentSlide = 0;
+                let testimonialInterval;
+                if (slides.length > 0 && dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    slides.forEach((_, i) => {
+                        const dot = document.createElement('span');
+                        dot.classList.add('dot');
+                        dot.addEventListener('click', () => { goToTstSlide(i); resetTstInterval(); });
+                        dotsContainer.appendChild(dot);
+                    });
+                    const dots = dotsContainer.querySelectorAll('.dot');
+                    const updateTstDots = () => { dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide)); };
+                    const goToTstSlide = (index) => {
+                        testimonialSlides.style.transform = `translateX(-${100 * index}%)`;
+                        currentSlide = index;
+                        updateTstDots();
+                    };
+                    const nextTstSlide = () => goToTstSlide((currentSlide + 1) % slides.length);
+                    const resetTstInterval = () => { clearInterval(testimonialInterval); testimonialInterval = setInterval(nextTstSlide, 6000); };
+                    goToTstSlide(0);
+                    resetTstInterval();
+                }
+            }
+
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                if (question) {
+                    question.addEventListener('click', () => {
+                        const answer = item.querySelector('.faq-answer');
+                        const isActive = item.classList.contains('active');
+                        faqItems.forEach(otherItem => {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        });
+                        if (!isActive) {
+                            item.classList.add('active');
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
